@@ -1,7 +1,7 @@
 {
     "name": "KickassTorrents",
-    "baseUrl": "https://katcr.co",
-    "searchUrl": "/katsearch/page/1/{query}",
+    "baseUrl": "https://kickasstorrents.cr",
+    "searchUrl": "/usearch/{query}/?sortby=seeders&sort=desc",
     "categories": {
        "All": "",
        "Movies": "url:/category/movies/page/1",
@@ -13,16 +13,16 @@
        "Anime": "url:/category/anime/page/1"
     },
     "defaultCategory": "All",
-    "resultsPerPageCount": 25,
+    "resultsPerPageCount": 20,
     "itemsSelector": "tbody tr",
     "itemSelectors": {
-      "title": ".torrents_table__torrent_title@text | trim",
-      "time": "td[data-title=\"Age\"]",
-      "seeds": "td[data-title=\"Seed\"] | int",
-      "peers": "td[data-title=\"Leech\"] | int",
-      "size": "td[data-title=\"Size\"]",
+      "title": "div.torrentname > div > a@text | trim",
+      "time": "td:nth-child(4)@text | trim",
+      "seeds": "td:nth-child(5)@text | int",
+      "peers": "td:nth-child(6) | int",
+      "size": "td:nth-child(2)@text | trim",
       "link": "a[title=\"Download torrent file\"]@href",
-      "desc": ".torrents_table__torrent_title@href"
+      "desc": "td:nth-child(1) > div.torrentname > div > a@href"
     },
     "paginateSelector": "a:contains(Next)@href",
     "torrentDetailsSelector": ".col@html"
